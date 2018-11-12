@@ -15,11 +15,24 @@ document.onkeyup = function(event) {
 
 var userGuess = event.key;
 var computerGuess = computerLetter[Math.floor(Math.random()*computerLetter.length)];
+var guessesLeft = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+//how many guesses are left?
+if (userGuess === computerGuess) {
+    alert ("You're Good!")
+}
+
+else {
+    var i;
+    for (i = 8; i < guessesLeft.length; i--) {
+
+    } 
+}
+
+// what is a win/loss
 if (userGuess === computerGuess) {
     wins++;
 }
-
 else {
     losses++;
 }
@@ -28,14 +41,11 @@ else {
 
 
 
+console.log (userGuess);
+console.log (computerGuess);
 
 }
-console.log (userGuess)
-console.log (computerGuess)
 
-
-// code for the number of remaining guesses the user has left
-var guessesLeft = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 // if (userGuess == computerLetter) {
 //     wins++;
@@ -44,6 +54,9 @@ var guessesLeft = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 var wins = 0;
 var losses = 0;
 
+winsText.textContent = "Wins: " + wins;
+lossesText.textContent = "Losses: " + losses;
+guessesText.textContent = "Guesses: " + losses;
 
 
 
