@@ -1,65 +1,50 @@
 
-//  1 - Opening the page will be the start of a new game and the computer will secretly choose a letter from a-z
-//  2 - You have 9 guesses to select the correct letter that the computer has chosen meaning your odds of winning are 9:26
-//  3 - Each guess will remove one of your remaining guesses you have left if you guess incorrectly
-//  4 - If you guess all 9 times incorrectly the counter will reset at 9 guesses, a loss will be tallied against the user, and the computer will choose a new letter which will be the start of a new game
-//  5 - If any of your 9 guesses correctly match the letter that the computer has chosen, the counter will reset at 9 guesses, a win will be tallied for the user, and the computer will choose a new letter which will be the start of a new game
-
-//arrays
-var computerLetter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-
-// code for the number of remaining guesses the user has left
-// var guessesLeft = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-document.onkeyup = function(event) {
-
-var userGuess = event.key;
-var computerGuess = computerLetter[Math.floor(Math.random()*computerLetter.length)];
-var guessesLeft = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-//how many guesses are left?
-if (userGuess === computerGuess) {
-    alert ("You're Good!")
-}
-
-else {
-    var i;
-    for (i = 8; i < guessesLeft.length; i--) {
-
-    } 
-}
-
-// what is a win/loss
-if (userGuess === computerGuess) {
-    wins++;
-}
-else {
-    losses++;
-}
 
 
+// array that lists all the computer choices
+var computerLetter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-
-
-console.log (userGuess);
-console.log (computerGuess);
-
-}
-
-
-// if (userGuess == computerLetter) {
-//     wins++;
-// }
-// // the number of wins or losses
+// starting variables for how many wins, losses, wrong letters and guesses there are
 var wins = 0;
 var losses = 0;
+var wrongGuesses = [""]
+var guessesLeft = 9;
 
-winsText.textContent = "Wins: " + wins;
-lossesText.textContent = "Losses: " + losses;
-guessesText.textContent = "Guesses: " + losses;
+// function that executes when user pushes a button
+document.onkeyup = function (event) {
 
+    // Randomly chooses a choice from the options array. This is the Computer's guess.
+    var computerGuess = computerLetter[Math.floor(Math.random() * computerLetter.length)];
+    console.log(computerGuess);
 
+    // Determines which key was pressed.
+    var userGuess = event.key;
+    console.log(userGuess);
 
+    // Was it a win??
+    if (userGuess == computerGuess) {
+        wins++;
+    }
 
+    // If you guessed wrong, which was it?
+    function addTo() {
+        wrongGuesses.push(("userGuess").value);
+        document.getElementById("guesses").innerHTML = "Guesses Left:" + userGuess;
+        console.log(wrongGuesses);
+    }
 
+    // And how may guesses do you have left?
+    // else if (userGuess != computerGuess) {
+    //     for (userGuess = 9; userGuess = 0; i--) {
+    //         guess--;
+    //     }
 
+    // }
+
+    // And how may guesses do you have left?
+
+    document.getElementById("wins").innerHTML = "Wins:" + wins;
+    document.getElementById("losses").innerHTML = "Losses:" + losses;
+    document.getElementById("guesses").innerHTML = "Guesses Left:" + guessesLeft;
+
+};
